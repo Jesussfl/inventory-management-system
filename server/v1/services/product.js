@@ -1,7 +1,9 @@
 const express = require("express");
+const db = require("../database/db");
 
-const getAllProducts = () => {
-  return "getting all products";
+const getAllProducts = async () => {
+  const products = await db.query("select * from products");
+  return products;
 };
 
 const getOneProduct = () => {
