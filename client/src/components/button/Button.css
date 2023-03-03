@@ -1,0 +1,16 @@
+.primary{
+    background-color: #FF6A55;
+    font-size: 0.9rem;
+
+}
+.secondary{
+    background-color: transparent;
+    border: 2px solid #272b30;
+    font-size: 0.9rem;
+}
+.primary:hover{
+    background-color: #FF4B33;
+}
+Button span .i{
+    font-size:1.5em;
+}
