@@ -1,7 +1,7 @@
 const productService = require("../services/product");
 
-const getAllProducts = (req, res) => {
-  console.log(productService.getAllProducts());
+const getAllProducts = async (req, res) => {
+  productService.getAllProducts().then((data) => console.log(data));
 };
 
 const getOneProduct = (req, res) => {
