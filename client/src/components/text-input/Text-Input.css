@@ -1,0 +1,28 @@
+.text-input{
+    display: inline-flex;
+    height: 1.7rem;
+    gap:6px;
+    align-items: center;
+    background-color: #272b30;
+    border-radius: 14px;
+    padding: 7px 12px;
+    color: #5c626a;
+}
+.text-field{
+    border: none;
+    background: none;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 400;
+    width: 100%;
+}
+.text-field:focus{
+    outline: none;
+
+}
+
+.text-field:focus ~ label, .text-input:focus-within{
+    transition: 200ms ease;
+    background-color: #0f1113;
+    border: 2px solid #272b30;
+}
