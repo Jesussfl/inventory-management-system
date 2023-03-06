@@ -1,8 +1,8 @@
+const employeeService = require("../services/employee");
+
 const login = async (req, res) => {
-  console.log("hola");
-  res.send({
-    token: "test123",
-  });
+  console.log(req.body);
+  employeeService.registerEmployee(req.body);
 };
 
 module.exports = { login };

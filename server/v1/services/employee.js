@@ -1,4 +1,3 @@
-const express = require("express");
 const db = require("../database/db");
 
 const getAllEmployees = async () => {
@@ -10,13 +9,21 @@ const getOneEmployee = () => {
   return "getting one employee";
 };
 
-const registerEmployee = async () => {
-  // await db.query(
-  //   `INSERT INTO employees
-  //   (id, email, password)
-  //   VALUES
-  //   (${data.id}, '${data.email}', ${data.pass})`
-  // );
+const registerEmployee = async (data) => {
+  const { email, password } = data;
+  await db.query(
+    `INSERT INTO employees
+    (email, password)
+    VALUES
+    ('${email}', '${password}')`,
+    (err, result) => {
+      if (err) {
+        throw err;
+      } else if (result) {
+        console.log("Registered", result);
+      }
+    }
+  );
   return "registering an employee";
 };
 

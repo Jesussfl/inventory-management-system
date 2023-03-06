@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TextInput from "../../components/text-input/Text-Input";
 import Divider from "../../components/divider/Divider";
 import Button from "../../components/button/Button";
@@ -7,7 +7,28 @@ import { Link } from "react-router-dom";
 
 import "./Login.css";
 
+async function loginUser(credentials) {
+  return fetch("http://localhost:3000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
+}
+
 function Login() {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = await loginUser({
+      email,
+      password,
+    });
+  };
+
   return (
     <div
       style={{
@@ -40,6 +61,7 @@ function Login() {
       <Divider />
       <p style={{ fontSize: "0.85rem" }}>Or continue with email</p>
       <form
+        onSubmit={handleSubmit}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -47,19 +69,16 @@ function Login() {
           width: "90%",
         }}
       >
-        <TextInput variant={1} />
-        <TextInput variant={2} />
+        <TextInput variant={1} onChange={(e) => setEmail(e.target.value)} />
+        <TextInput variant={2} onChange={(e) => setPassword(e.target.value)} />
         <Button text={"Login"} variant={"primary"} />
       </form>
       <p style={{ fontSize: "0.75rem", color: "#5c626a" }}>
-        Don't have an account?{" "}
-        <Link to="/signup">
-          <a>Sign up</a>
-        </Link>
+        Don't have an account? <Link to="/signup">Sign up</Link>
       </p>
-      <caption style={{ fontSize: "0.7rem", width: "80%", color: "#5c626a" }}>
+      <p style={{ fontSize: "0.7rem", width: "80%", color: "#5c626a" }}>
         This site is protected by reCaptcha and the Google Privacy Policy
-      </caption>
+      </p>
     </div>
   );
 }

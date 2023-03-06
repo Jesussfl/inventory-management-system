@@ -6,10 +6,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
 const indexRouter = require("./v1/routes/index");
-const usersRouter = require("./v1/routes/users");
-const productsRouter = require("./v1/routes/product");
-const employeesRouter = require("./v1/routes/employee");
-const authRouter = require("./v1/routes/auth");
+
 const app = express();
 
 // view engine setup
@@ -23,17 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
-// app.use("/", authRouter);
-app.use("/login", (req, res) => {
-  res.send({
-    token: "test123",
-  });
-});
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/api/v1", productsRouter);
-app.use("/api/v1", employeesRouter);
-app.use("/api/v1", employeesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TextInput from "../../components/text-input/Text-Input";
 import Divider from "../../components/divider/Divider";
 import Button from "../../components/button/Button";
@@ -7,7 +7,29 @@ import { Link } from "react-router-dom";
 
 import "./Signup.css";
 
-function Login() {
+async function signupUser(credentials) {
+  return fetch("http://localhost:3000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
+}
+
+function Signup() {
+  const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = await signupUser({
+      email,
+      password,
+    });
+  };
+
   return (
     <div
       style={{
@@ -50,7 +72,7 @@ function Login() {
         <TextInput text={"Enter your username"} variant={1} />
         <TextInput variant={1} />
         <TextInput variant={2} />
-        <Button text={"Login"} variant={"primary"} />
+        <Button text={"Signup"} variant={"primary"} />
       </form>
       <p style={{ fontSize: "0.75rem", color: "#5c626a" }}>
         I already have an account{" "}
@@ -65,4 +87,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;
