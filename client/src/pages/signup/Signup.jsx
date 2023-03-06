@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import "./Signup.css";
 
 async function signupUser(credentials) {
-  return fetch("http://localhost:3000/login", {
+  return fetch("http://localhost:3000/api/auth/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -25,6 +25,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = await signupUser({
+      username,
       email,
       password,
     });
@@ -62,6 +63,7 @@ function Signup() {
       <Divider />
       <p style={{ fontSize: "0.85rem" }}>Or continue with email</p>
       <form
+        onSubmit={handleSubmit}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -69,9 +71,13 @@ function Signup() {
           width: "90%",
         }}
       >
-        <TextInput text={"Enter your username"} variant={1} />
-        <TextInput variant={1} />
-        <TextInput variant={2} />
+        <TextInput
+          text={"Enter your username"}
+          variant={0}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <TextInput variant={1} onChange={(e) => setEmail(e.target.value)} />
+        <TextInput variant={2} onChange={(e) => setPassword(e.target.value)} />
         <Button text={"Signup"} variant={"primary"} />
       </form>
       <p style={{ fontSize: "0.75rem", color: "#5c626a" }}>

@@ -10,21 +10,21 @@ const getOneEmployee = () => {
 };
 
 const registerEmployee = async (data) => {
-  const { email, password } = data;
-  await db.query(
+  const { username, email, password } = data;
+  const result = await db.query(
     `INSERT INTO employees
-    (email, password)
+    (username, email, password)
     VALUES
-    ('${email}', '${password}')`,
-    (err, result) => {
-      if (err) {
-        throw err;
-      } else if (result) {
-        console.log("Registered", result);
-      }
-    }
+    ('${username}', '${email}', '${password}')`
   );
-  return "registering an employee";
+
+  let message = "Error in registering employee";
+
+  if (result.affectedRows) {
+    message = "Employee Registered successfully";
+  }
+
+  return message;
 };
 
 const updateEmployee = () => {
