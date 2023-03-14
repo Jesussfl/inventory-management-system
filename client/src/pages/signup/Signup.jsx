@@ -14,7 +14,7 @@ async function signupUser(credentials) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(credentials),
-  }).then((data) => data.json());
+  }).then((res) => res.json()).then(data => console.log(data.message));
 }
 
 function Signup() {
@@ -22,9 +22,10 @@ function Signup() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = await signupUser({
+    await signupUser({ 
       username,
       email,
       password,
@@ -83,12 +84,12 @@ function Signup() {
       <p style={{ fontSize: "0.75rem", color: "#5c626a" }}>
         I already have an account{" "}
         <Link to="/login">
-          <a>Sign in</a>
+          Sign in
         </Link>
       </p>
-      <caption style={{ fontSize: "0.7rem", width: "80%", color: "#5c626a" }}>
+      <p style={{ fontSize: "0.7rem", width: "80%", color: "#5c626a" }}>
         This site is protected by reCaptcha and the Google Privacy Policy
-      </caption>
+      </p>
     </div>
   );
 }

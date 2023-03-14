@@ -15,6 +15,5 @@ router.use("/", authRouter);
 router.use("/users", usersRouter);
 router.use("/api/v1", productsRouter);
 router.use("/api/v1", employeesRouter);
-router.use("/api/v1", employeesRouter);
 
 module.exports = router;
