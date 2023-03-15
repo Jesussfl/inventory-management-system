@@ -5,8 +5,11 @@ const getAllEmployees = async () => {
   return employees;
 };
 
-const getOneEmployee = () => {
-  return "getting one employee";
+const getOneEmployee = async (data) => {
+  const result = await db.query(
+    `select MIN() from employees where email = '${data.email}'  and password = '${data.password}'`
+  );
+  return result;
 };
 
 const registerEmployee = async (data) => {
