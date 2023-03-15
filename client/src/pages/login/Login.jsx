@@ -8,13 +8,15 @@ import { Link } from "react-router-dom";
 import "./Login.css";
 
 async function loginUser(credentials) {
-  return fetch("http://localhost:3000/login", {
+  return fetch("http://localhost:3000/api/auth/signin", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(credentials),
-  }).then((data) => data.json());
+  })
+    .then((data) => data.json())
+    .then((data) => console.log(data));
 }
 
 function Login() {

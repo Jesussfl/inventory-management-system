@@ -12,10 +12,8 @@ router.use((req, res, next) => {
   next();
 });
 
-router.post("/api/auth/signup", authController.signup);
-//   .post("/api/auth/signin", authController.signin);
-
-// router.post("/login", authController.login);
-// // router.get("/logout", authController.logout);
+router
+  .post("/api/auth/signup", authController.signup)
+  .post("/api/auth/signin", authController.signin);
 
 module.exports = router;
