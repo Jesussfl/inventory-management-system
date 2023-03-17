@@ -7,7 +7,7 @@ const getAllEmployees = async () => {
 
 const getOneEmployee = async (data) => {
   const result = await db.query(
-    `select MIN() from employees where email = '${data.email}'  and password = '${data.password}'`
+    `select * from employees where email = '${data.email}' and password = '${data.password}'`
   );
   return result;
 };

@@ -2,23 +2,23 @@ const jwt = require("jwt");
 const config = require("../../configs/auth-config");
 
 const verifyToken = (req, res, next) => {
-  let token = req.headers["x-access-token"];
+  const {token} = req.body;
 
   if (!token) {
     return res.status(403).send({
       message: "No token provided",
     });
   }
-
-  jwt.verify(token, config.secret, (err, decoded) => {
-    if (err) {
-      return res.status(401).send({
-        message: "Unauthorized",
-      });
-    }
-    req.userId = decoded.id;
-    next();
-  });
+  try {
+    const decoded = jwt.verify(token, config.secret);
+    req.user = decoded;
+  } catch (error) {
+    return res.status(401).json({
+      msg: "Invalid token",
+    })
+  }
+  next();
+  
 };
 
 module.exports = { verifyToken };

@@ -16,7 +16,7 @@ async function loginUser(credentials) {
     body: JSON.stringify(credentials),
   })
     .then((data) => data.json())
-    .then((data) => console.log(data));
+    .then((data) => navigate("/home", { replace: true }));
 }
 
 function Login() {
