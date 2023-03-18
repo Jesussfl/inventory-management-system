@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 import "./App.css";
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
       </Router>

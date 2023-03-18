@@ -1,7 +1,9 @@
 const employeeService = require("../services/employee");
 
 const getAllEmployees = async (req, res) => {
-  employeeService.getAllEmployees().then((data) => console.log(data));
+  await employeeService.getAllEmployees().then((data) => {
+    console.log(data);
+  });
 };
 
 const getOneEmployee = (req, res) => {

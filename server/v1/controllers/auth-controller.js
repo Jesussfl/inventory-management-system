@@ -23,7 +23,7 @@ const signin = async (req, res) => {
   const { email, password } = req.body;
   employeeService.getOneEmployee({ email, password }).then((data) => {
     console.log(data);
-    if ((data.length = 0)) {
+    if (data.length == 0) {
       res.status(401).send({
         message: "Invalid email or password",
       });
@@ -31,9 +31,9 @@ const signin = async (req, res) => {
       const token = jwt.sign({ email: email, password: password }, secret, {
         expiresIn: "1h",
       });
-      res.status(200).send({
+      res.status(200).json({
+        token: `Bearer ${token}`,
         message: "Logged in successfully",
-        token: token,
       });
     }
   });

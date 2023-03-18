@@ -3,34 +3,35 @@ import TextInput from "../../components/text-input/Text-Input";
 import Divider from "../../components/divider/Divider";
 import Button from "../../components/button/Button";
 import { RiGoogleFill, RiFacebookFill, RiAppleFill } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import "./Login.css";
-
-async function loginUser(credentials) {
-  return fetch("http://localhost:3000/api/auth/signin", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  })
-    .then((data) => data.json())
-    .then((data) => navigate("/home", { replace: true }));
-}
 
 function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = await loginUser({
-      email,
-      password,
-    });
+    return fetch("http://localhost:3000/api/auth/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("token", data.token);
+        if (data.token) {
+          setLoggedIn(true);
+        }
+      });
   };
-
+  if (loggedIn) {
+    return <Navigate to="/dashboard" />;
+  }
   return (
     <div
       style={{
