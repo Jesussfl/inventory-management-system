@@ -2,7 +2,7 @@ const employeeService = require("../services/employee");
 
 const getAllEmployees = async (req, res) => {
   await employeeService.getAllEmployees().then((data) => {
-    console.log(data);
+    res.send({message: "Employees fetched successfully"});
   });
 };
 

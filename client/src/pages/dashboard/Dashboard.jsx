@@ -6,7 +6,6 @@ function Dashboard() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log(token);
     fetch("http://localhost:3000/api/v1/employees", {
       method: "GET",
       headers: {

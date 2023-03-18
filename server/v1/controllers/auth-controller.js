@@ -22,7 +22,6 @@ const signup = async (req, res, next) => {
 const signin = async (req, res) => {
   const { email, password } = req.body;
   employeeService.getOneEmployee({ email, password }).then((data) => {
-    console.log(data);
     if (data.length == 0) {
       res.status(401).send({
         message: "Invalid email or password",
