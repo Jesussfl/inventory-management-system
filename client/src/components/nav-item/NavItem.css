@@ -1,0 +1,34 @@
+/* Nav item */
+
+
+/* Auto layout */
+
+.navbarLink{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding: 12px;
+    gap: 4px;
+    border-radius: 12px;
+    color: #6F767E
+}
+  
+.navbarLink.active {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding: 12px;
+    gap: 4px;
+    
+    
+    /* Neutral/06 */
+    
+    background: #272B30;
+    color: #fff;
+    box-shadow: inset 0px -2px 1px rgba(0, 0, 0, 0.4), inset 0px 1px 1px rgba(255, 255, 255, 0.11);
+    border-radius: 12px;
+    
+    /* Inside auto layout */
+}

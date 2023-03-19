@@ -5,7 +5,8 @@ function Button({ text, variant, leftIcon, rightIcon }) {
   if (leftIcon) {
     return (
       <button type={"submit"} className={variant}>
-        <span style={{ marginRight: "6px" }}>{leftIcon}</span> {text}
+        <span style={{ marginRight: "6px" }}>{leftIcon}</span>
+        {text}
       </button>
     );
   }

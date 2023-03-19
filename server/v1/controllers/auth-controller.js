@@ -5,12 +5,19 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 const signup = async (req, res, next) => {
+  const { username, email, password } = req.body;
   try {
-    await employeeService.registerEmployee(req.body).then(() =>
-      res.send({
-        message: "Employee was successfully registered",
-      })
-    );
+    await employeeService
+      .registerEmployee({ username, email, password })
+      .then(() => {
+        const token = jwt.sign({ email, password }, secret, {
+          expiresIn: "1h",
+        });
+        res.status(200).json({
+          token: `Bearer ${token}`,
+          message: "Employee was successfully registered",
+        });
+      });
   } catch (err) {
     res.status(500).send({
       message: err.message,
@@ -21,8 +28,9 @@ const signup = async (req, res, next) => {
 
 const signin = async (req, res) => {
   const { email, password } = req.body;
-  employeeService.getOneEmployee({ email, password }).then((data) => {
-    if (data.length == 0) {
+  await employeeService.getOneEmployee({ email, password }).then((data) => {
+    console.log(data);
+    if (data.length === 0) {
       res.status(401).send({
         message: "Invalid email or password",
       });
