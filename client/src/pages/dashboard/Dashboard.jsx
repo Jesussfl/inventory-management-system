@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LeftNavbar from "../../components/left-navbar/LeftNavbar";
+import TopNavbar from "../../components/top-navbar/TopNavbar";
 import "./Dashboard.css";
 
 import Home from "./home/Home";
@@ -59,18 +60,22 @@ function Dashboard() {
       >
         <div id="screens-container">
           <LeftNavbar />
-          <div id="screen-section-container"></div>
-          <Routes>
-            <Route path={`${location.pathname}/home`} element={<Home />} />
-            <Route
-              path={`${location.pathname}/products`}
-              element={<Products />}
-            />
-            <Route
-              path={`${location.pathname}/employees`}
-              element={<employees />}
-            />
-          </Routes>
+          <div style={{ width: "100%" }}>
+            <TopNavbar />
+            <div id="screen-section-container">
+              <Routes>
+                <Route path={`${location.pathname}/home`} element={<Home />} />
+                <Route
+                  path={`${location.pathname}/products`}
+                  element={<Products />}
+                />
+                <Route
+                  path={`${location.pathname}/employees`}
+                  element={<employees />}
+                />
+              </Routes>
+            </div>
+          </div>
         </div>
       </div>
     </>
