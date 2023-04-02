@@ -4,7 +4,8 @@ import "./Dashboard.css";
 
 import Home from "./home/Home";
 import Products from "./products/Products";
-import employees from "./employees/employees";
+import Employees from "./employees/Employees";
+import Topbar from "../../components/topbar/Topbar";
 
 import {
   BrowserRouter as Router,
@@ -59,18 +60,22 @@ function Dashboard() {
       >
         <div id="screens-container">
           <LeftNavbar />
-          <div id="screen-section-container"></div>
-          <Routes>
-            <Route path={`${location.pathname}/home`} element={<Home />} />
-            <Route
-              path={`${location.pathname}/products`}
-              element={<Products />}
-            />
-            <Route
-              path={`${location.pathname}/employees`}
-              element={<employees />}
-            />
-          </Routes>
+          <div style={{ width: "100%" }}>
+            <Topbar />
+            <div id="screen-section-container">
+              <Routes>
+                <Route path={`${location.pathname}/home`} element={<Home />} />
+                <Route
+                  path={`${location.pathname}/products`}
+                  element={<Products />}
+                />
+                <Route
+                  path={`${location.pathname}/employees`}
+                  element={<Employees />}
+                />
+              </Routes>
+            </div>
+          </div>
         </div>
       </div>
     </>

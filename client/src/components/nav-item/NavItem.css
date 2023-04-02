@@ -32,3 +32,59 @@
     
     /* Inside auto layout */
 }
+
+.dropdown-content{
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.25s;
+
+    height: 0px;
+    width: 200px;
+    color: #fff;
+    
+    /* Inside auto layout */
+    
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.thread{
+    width: 24px;
+    position: relative;
+    overflow: hidden;
+}
+.line1{
+    width: 2px;
+    height: 100%;
+    background: #272b30;
+    position: absolute;
+    top: 0;
+    left: 8px;
+}
+.line2{
+    position: absolute;
+    border: 2px solid #272b30;
+    top: -55%;
+    left: 8px;
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+}
+.nav-items{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+
+}
+.dropdown-button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.dropdown-button:focus{
+    border: none;
+    outline: none;
+}
+.dropdown-button:focus + .dropdown-content{
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.25s;
+    height: 200px;
+}

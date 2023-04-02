@@ -1,0 +1,25 @@
+.topbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1a1d1f;
+}
+
+.topbarWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 1300px;
+    padding: 10px;
+    margin: 0 auto;
+
+}
+.topLeft{
+    display: flex;
+    align-items: center;
+
+    
+}

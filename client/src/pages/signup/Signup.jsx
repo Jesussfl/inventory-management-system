@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextInput from "../../components/text-input/Text-Input";
 import Divider from "../../components/divider/Divider";
-import Button from "../../components/button/Button";
+import { Button } from "../../components/button/Button";
 import { RiGoogleFill, RiFacebookFill, RiAppleFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
@@ -14,7 +14,9 @@ async function signupUser(credentials) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(credentials),
-  }).then((res) => res.json()).then(data => console.log(data.message));
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data.message));
 }
 
 function Signup() {
@@ -22,10 +24,9 @@ function Signup() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await signupUser({ 
+    await signupUser({
       username,
       email,
       password,
@@ -82,10 +83,7 @@ function Signup() {
         <Button text={"Signup"} variant={"primary"} />
       </form>
       <p style={{ fontSize: "0.75rem", color: "#5c626a" }}>
-        I already have an account{" "}
-        <Link to="/login">
-          Sign in
-        </Link>
+        I already have an account <Link to="/login">Sign in</Link>
       </p>
       <p style={{ fontSize: "0.7rem", width: "80%", color: "#5c626a" }}>
         This site is protected by reCaptcha and the Google Privacy Policy

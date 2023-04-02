@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextInput from "../../components/text-input/Text-Input";
 import Divider from "../../components/divider/Divider";
-import Button from "../../components/button/Button";
+import { Button, IconButton } from "../../components/button/Button";
 import { RiGoogleFill, RiFacebookFill, RiAppleFill } from "react-icons/ri";
 import { Link, Navigate } from "react-router-dom";
 

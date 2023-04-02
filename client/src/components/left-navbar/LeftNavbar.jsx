@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import NavItem from "../nav-item/NavItem";
-import { RiHomeFill, RiFacebookFill, RiAppleFill } from "react-icons/ri";
+import { NavDropdown } from "../nav-item/NavItem";
+import {
+  RiHomeLine,
+  RiVipDiamondLine,
+  RiUser3Line,
+  RiQuestionAnswerLine,
+  RiSettings2Line,
+} from "react-icons/ri";
 import "./LeftNavbar.css";
 
 function LeftNavbar() {
@@ -14,42 +21,48 @@ function LeftNavbar() {
     <>
       <nav>
         <div>
-          <div
-            style={{ background: "#fff", width: "36px", height: "36px" }}
-          ></div>
+          <img src="../../../public/images/Logo.svg" />
           <ul>
             <li>
               <NavItem
                 text={"Home"}
                 address={"/dashboard/home"}
-                leftIcon={<RiHomeFill />}
-                onClick={() => handleSetActiveLink("/dashboard/home")}
-                className={`navbarLink ${
-                  activeLink == "/dashboard/home" ? "active" : ""
-                }`}
+                leftIcon={<RiHomeLine />}
               />
             </li>
             <li>
               <NavItem
                 text={"Products"}
                 address={"/dashboard/products"}
-                leftIcon={<RiHomeFill />}
-                className={`navbarLink ${
-                  activeLink === "/dashboard/products" ? "active" : ""
-                }`}
-                onClick={() => handleSetActiveLink("/dashboard/products")}
+                leftIcon={<RiVipDiamondLine />}
               />
             </li>
             <li>
               <NavItem
                 text={"Employees"}
                 address={"/dashboard/employees"}
-                leftIcon={<RiHomeFill />}
-                className={`navbarLink ${
-                  activeLink === "/dashboard/employees" ? "active" : ""
-                }`}
-                onClick={() => handleSetActiveLink("/dashboard/employees")}
+                leftIcon={<RiUser3Line />}
               />
+            </li>
+            <li>
+              <NavDropdown text={"Account"} leftIcon={<RiUser3Line />}>
+                <NavItem
+                  text={"Settings"}
+                  thread={true}
+                  address={"/dashboard/settings"}
+                />
+                <NavItem
+                  text={"Settings"}
+                  thread={true}
+                  address={"/dashboard/settings"}
+                />
+                <NavItem
+                  text={"Settings"}
+                  thread={true}
+                  last={true}
+                  address={"/dashboard/settings"}
+                />
+              </NavDropdown>
             </li>
           </ul>
         </div>
@@ -60,22 +73,14 @@ function LeftNavbar() {
               <NavItem
                 text={"Help & Getting Started"}
                 address={"/dashboard/help"}
-                leftIcon={<RiHomeFill />}
-                className={`navbarLink ${
-                  activeLink === "/dashboard/help" ? "active" : ""
-                }`}
-                onClick={() => handleSetActiveLink("/dashboard/help")}
+                leftIcon={<RiQuestionAnswerLine />}
               />
             </li>
             <li>
               <NavItem
-                text={"Settingss"}
+                text={"Settings"}
                 address={"/dashboard/settings"}
-                leftIcon={<RiHomeFill />}
-                className={`navbarLink ${
-                  activeLink === "/dashboard/settings" ? "active" : ""
-                }`}
-                onClick={() => handleSetActiveLink("/dashboard/settings")}
+                leftIcon={<RiSettings2Line />}
               />
             </li>
           </ul>
