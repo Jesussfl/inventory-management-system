@@ -5,7 +5,8 @@ import "./Dashboard.css";
 
 import Home from "./home/Home";
 import Products from "./products/Products";
-import employees from "./employees/employees";
+import Employees from "./employees/Employees";
+import Topbar from "../../components/topbar/Topbar";
 
 import {
   BrowserRouter as Router,
@@ -61,7 +62,7 @@ function Dashboard() {
         <div id="screens-container">
           <LeftNavbar />
           <div style={{ width: "100%" }}>
-            <TopNavbar />
+            <Topbar />
             <div id="screen-section-container">
               <Routes>
                 <Route path={`${location.pathname}/home`} element={<Home />} />
@@ -71,7 +72,7 @@ function Dashboard() {
                 />
                 <Route
                   path={`${location.pathname}/employees`}
-                  element={<employees />}
+                  element={<Employees />}
                 />
               </Routes>
             </div>

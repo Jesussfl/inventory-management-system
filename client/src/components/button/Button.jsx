@@ -1,7 +1,7 @@
 import React from "react";
 import "./Button.css";
 
-function Button({ text, variant, leftIcon, rightIcon }) {
+export function Button({ text, variant, leftIcon, rightIcon }) {
   if (leftIcon) {
     return (
       <button type={"submit"} className={variant}>
@@ -26,4 +26,10 @@ function Button({ text, variant, leftIcon, rightIcon }) {
   );
 }
 
-export default Button;
+export function IconButton({ icon }) {
+  return (
+    <button type={"submit"} className="icon-button">
+      <span>{icon}</span>
+    </button>
+  );
+}

@@ -1,7 +1,17 @@
 nav{
     background: #1A1D1F;
     min-width: 240px;
-    padding: 12px;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+}
+img{
+    width: 25%;
+}
+nav div{
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
